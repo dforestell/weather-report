@@ -1,7 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+//components
+import TopSection from './components/topSection';
+import BottomSection from './components/bottomSection';
+
+//styles 
 import './sass/app.scss'
 
 function App() {
@@ -9,11 +13,11 @@ function App() {
     <div className="app-container">
       <div className="main-container">
         <div className="top-section">
-          TOP
+          < TopSection />
          </div>
 
          <div className="bottom-section">
-          BOTTOM
+          < BottomSection />
          </div>
       </div>
 

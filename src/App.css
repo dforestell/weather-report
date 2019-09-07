@@ -23,6 +23,15 @@
   color: #61dafb;
 }
 
+.btn{
+  border: 1px solid #ddd;
+  margin: 15px;
+}
+
+.btn:focus{
+  outline: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

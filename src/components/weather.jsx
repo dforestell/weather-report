@@ -14,7 +14,7 @@ export default class Weather extends React.Component {
                 <div className="weather-header">location</div>
                 <div className="inner-weather">
                     <span className="weather-image"><img src={SunImg}/></span>
-                    <span className="temp">temp</span>
+                    <span className="temp">75º</span>
                 </div>
                 <div className="weather-footer"> weather status</div>
             </div>

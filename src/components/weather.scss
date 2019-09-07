@@ -23,4 +23,12 @@
         flex-direction: row;
         justify-content: center;
     }
+    .weather-image {
+        height: 2em;
+        width: 3em;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
 }

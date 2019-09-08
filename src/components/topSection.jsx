@@ -33,10 +33,26 @@ export default class TopSection extends React.Component {
                     )}
                     </Reference>
                     { isSelectLocationOpen &&
-                    <Popper placement="top">
+                    <Popper 
+                    placement="top">
                     {({ ref, style, placement, arrowProps }) => (
-                        <div ref={ref} style={style} data-placement={placement}>
-                        Popper element
+                        <div className="popup-container" 
+                        ref={ref} 
+                        style={style} 
+                        data-placement={placement}>
+                            <div className="form-container">
+                                <label htmlFor="location-name">Location Name</label>
+                                <input
+                                id="location-name"
+                                type="text"
+                                placeholder="City Name"
+                                />
+                                <button
+                                className="btn btn-select-location"
+                                >
+                                Select
+                                </button>
+                            </div>
                         <div ref={arrowProps.ref} style={arrowProps.style} />
                         </div>
                     )}

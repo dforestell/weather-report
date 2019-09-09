@@ -21,14 +21,13 @@ class App extends React.Component{
       isLoading: true,
     };
   }
-
-  componentDidMount(){
+  updateWeather(){
     const { cityName, forecastDays } = this.state;
-    const { eventEmitter } = this.props;
-
+  
     const URL = `https://api-cdn.apixu.com/v1/forecast.json?key=${WEATHER_KEY} &q=${cityName} &days=${forecastDays}`
     axios.get(URL)
     .then(res => {
+      console.log(res.data)
       return res.data;
     }).then((data) => {
       this.setState({ 
@@ -42,9 +41,14 @@ class App extends React.Component{
     .catch(err =>{
       if (err) console.log("Cannot fetch data from API:", err )
     })
+  }
+  componentDidMount(){
+    const { eventEmitter } = this.props;
+
+    this.updateWeather()
 
     eventEmitter.on("updateWeather", (newCity) => {
-      this.setState({cityName: newCity})
+      this.setState({cityName: newCity}, () => this.updateWeather())
     })
   }
 

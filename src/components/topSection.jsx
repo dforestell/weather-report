@@ -12,6 +12,11 @@ export default class TopSection extends React.Component {
         }
     }
 
+    onSelectCity(){
+        console.log('rigged')
+        this.toggleSelectLocation()
+    }
+
     toggleSelectLocation(){
         this.setState(prevState => ({ isSelectLocationOpen: !prevState.isSelectLocationOpen}));
     }
@@ -49,6 +54,7 @@ export default class TopSection extends React.Component {
                                 />
                                 <button
                                 className="btn btn-select-location"
+                                onClick={ () => this.onSelectCity() }
                                 >
                                 Select
                                 </button>

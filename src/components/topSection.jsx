@@ -12,12 +12,21 @@ export default class TopSection extends React.Component {
         }
     }
 
+    onSelectCity(){
+        const { eventEmitter } = this.props;
+        const locationName = document.getElementById("location-name").value
+        eventEmitter.emit("updateWeather", locationName);
+        this.toggleSelectLocation();
+    }
+
     toggleSelectLocation(){
         this.setState(prevState => ({ isSelectLocationOpen: !prevState.isSelectLocationOpen}));
     }
 
     render(){
         const { isSelectLocationOpen } = this.state;
+        const { eventEmitter } = this.props;
+
         return(
             <div className="top-container">
                 <h3 className="title">Weather Report</h3>
@@ -27,7 +36,7 @@ export default class TopSection extends React.Component {
                     <Reference>
                     {({ ref }) => (
                          <button className="btn btn-select-location" ref={ref} 
-                         onClick={this.toggleSelectLocation.bind(this)} >
+                         onClick={() => this.toggleSelectLocation()} >
                              Select Location
                         </button> 
                     )}
@@ -49,6 +58,7 @@ export default class TopSection extends React.Component {
                                 />
                                 <button
                                 className="btn btn-select-location"
+                                onClick={ () => this.onSelectCity() }
                                 >
                                 Select
                                 </button>

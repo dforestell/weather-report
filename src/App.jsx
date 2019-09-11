@@ -9,7 +9,6 @@ import BottomSection from './components/bottomSection';
 import './sass/app.scss'
 
 import axios from 'axios';
-import ForecastDay from './components/forecastDay';
 
 const WEATHER_KEY = '87ee6365c40346c69f6225656190709'; 
 
@@ -17,20 +16,22 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = { 
+      searchParam: "Chicago",
       cityName: "Chicago",
       numForecastDays: 4,
       isLoading: true,
     };
   }
   updateWeather(){
-    const { cityName, numForecastDays } = this.state;
+    const { searchParam, numForecastDays } = this.state;
   
-    const URL = `https://api-cdn.apixu.com/v1/forecast.json?key=${WEATHER_KEY} &q=${cityName} &days=${numForecastDays}`
+    const URL = `https://api-cdn.apixu.com/v1/forecast.json?key=${WEATHER_KEY} &q=${searchParam} &days=${numForecastDays}`
     axios.get(URL)
     .then(res => {
       return res.data;
     }).then((data) => {
       this.setState({ 
+        cityName: data.location.name,
         temp_f: data.current.temp_f, 
         isDay: data.current.is_day, 
         text: data.current.condition.text, 
@@ -48,8 +49,8 @@ class App extends React.Component{
 
     this.updateWeather()
 
-    eventEmitter.on("updateWeather", (newCity) => {
-      this.setState({cityName: newCity}, () => this.updateWeather())
+    eventEmitter.on("updateWeather", (newParam) => {
+      this.setState({searchParam: newParam}, () => this.updateWeather())
     })
   }
 

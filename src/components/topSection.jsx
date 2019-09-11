@@ -54,7 +54,7 @@ export default class TopSection extends React.Component {
                                 <input
                                 id="location-name"
                                 type="text"
-                                placeholder="City Name"
+                                placeholder="City Name or Zip code"
                                 />
                                 <button
                                 className="btn btn-select-location"

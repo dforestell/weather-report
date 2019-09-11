@@ -13,7 +13,8 @@ export default class ForecastDay extends React.Component {
             <div className="image">
                 <img src={day.condition.icon} />
             </div>
-            <div className="text">{day.avgtemp_f}</div>
+            <div className="text">High: {Math.ceil(day.maxtemp_f)}</div>
+            <div className="text">Low: {Math.ceil(day.mintemp_f)}</div>
             <div className="muted-text">{day.condition.text}</div>
         </div>
         )

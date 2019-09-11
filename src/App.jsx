@@ -28,7 +28,6 @@ class App extends React.Component{
     const URL = `https://api-cdn.apixu.com/v1/forecast.json?key=${WEATHER_KEY} &q=${cityName} &days=${numForecastDays}`
     axios.get(URL)
     .then(res => {
-      console.log(res.data)
       return res.data;
     }).then((data) => {
       this.setState({ 
@@ -66,7 +65,6 @@ class App extends React.Component{
      forecastDays
    } = this.state
 
-   console.log(forecastDays)
   return (
     <div className="app-container">
       <div className="main-container">
